@@ -1,0 +1,32 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Blue Collar Coder Videos{Astro.props.title ? `: ${Astro.props.title}` : ''}</title>
+	</head>
+	<body class="max-w-5xl mx-auto">
+		<header class="bg-indigo-600 mb-3">
+			<nav class="mx-auto max-w-7xl px-6 lg:px-8" aria-label="Top">
+				<div class="flex w-full items-center justify-between border-b border-indigo-500 py-6 lg:border-none">
+					<div class="flex items-center">
+						<a href="/">
+							<span class="sr-only">Blue Collar Coder</span>
+						</a>
+						<div class="ml-10 hidden space-x-8 lg:block">
+							<a href="/" class="text-base font-medium text-white hover:text-indigo-50">Home</a>
+							<a href="/search" class="text-base font-medium text-white hover:text-indigo-50">Search</a>
+						</div>
+					</div>
+				</div>
+				<div class="flex flex-wrap justify-center gap-x-6 py-4 lg:hidden">
+					<a href="/" class="text-base font-medium text-white hover:text-indigo-50">Home</a>		
+					<a href="/search" class="text-base font-medium text-white hover:text-indigo-50">Search</a>
+				</div>
+			</nav>
+		</header>
+		
+		<slot />
+	</body>
+</html>

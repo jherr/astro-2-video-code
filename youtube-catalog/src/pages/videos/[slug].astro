@@ -1,0 +1,36 @@
+---
+import { CollectionEntry, getCollection } from 'astro:content'
+
+export const prerender = true;
+
+import Layout from '../../layouts/Layout.astro';
+import createSlug from '../../lib/createSlug';
+
+export async function getStaticPaths() {
+  const video = await getCollection('videos')
+  return video.map((video) => ({
+    params: { slug: createSlug(video.data.title) },
+    props: video
+  }))
+}
+
+const { data, render, id } = Astro.props
+const { Content } = await render()
+---
+
+<Layout>
+  <h1 class="font-bold text-2xl mb-2">{data.title}</h1>
+  <div class="aspect-w-16 aspect-h-9">
+    <iframe
+      src={`https://www.youtube.com/embed/${id.replace('.mdx','')}`}
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <div class="prose prose-xl mt-5">
+    <Content />
+  </div>
+</Layout>
