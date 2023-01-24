@@ -6,9 +6,7 @@ export const prerender = true;
 import VideoGrid from "../components/VideoGrid";
 import Layout from "../layouts/Layout.astro";
 
-let isLoading = true;
 const allVideos = await getCollection("videos");
-isLoading = !isLoading;
 const recentVideos = [...allVideos]
   .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
   .slice(0, 10);
@@ -16,5 +14,5 @@ const recentVideos = [...allVideos]
 
 <Layout>
   <h1 class="text-lg font-semibold px-8 py-4">Videos:</h1>
-  <VideoGrid videos={recentVideos} isLoading={isLoading} />
+  <VideoGrid videos={recentVideos} />
 </Layout>

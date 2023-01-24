@@ -8,7 +8,7 @@ export default function VideoGrid({
   isLoading
 }: {
   videos: CollectionEntry<"videos">[];
-  isLoading: Boolean;
+  isLoading?: Boolean;
 }) {
 
   if(isLoading) return <div class='p-4 bg-white rounded-md drop-shadow-md'>Loading videos...</div>
