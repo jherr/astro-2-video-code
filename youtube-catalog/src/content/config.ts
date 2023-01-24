@@ -1,5 +1,12 @@
 import { z, defineCollection } from "astro:content";
 
+// A Schema to be shared by all thumbnails
+const thumbnailSchema = z.object({
+  url: z.string(),
+  width: z.number(),
+  height: z.number(),
+});
+
 const videoSchema = defineCollection({
   schema: z.object({
     title: z.string(),
@@ -8,33 +15,11 @@ const videoSchema = defineCollection({
     privacyStatus: z.enum(["public"]),
     short: z.boolean(),
     thumbnails: z.object({
-      default: z.object({
-        url: z.string(),
-        width: z.number(),
-        height: z.number(),
-      }),
-      medium: z.object({
-        url: z.string(),
-        width: z.number(),
-        height: z.number(),
-      }),
-      high: z.object({
-        url: z.string(),
-        width: z.number(),
-        height: z.number(),
-      }),
-      standard: z.object({
-        url: z.string(),
-        width: z.number(),
-        height: z.number(),
-      }),
-      maxres: z
-        .object({
-          url: z.string(),
-          width: z.number(),
-          height: z.number(),
-        })
-        .optional(),
+      default: thumbnailSchema,
+      medium: thumbnailSchema,
+      high: thumbnailSchema,
+      standard: thumbnailSchema,
+      maxres: thumbnailSchema.optional(),
     }),
   }),
 });
