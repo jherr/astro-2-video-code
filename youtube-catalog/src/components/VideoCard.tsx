@@ -12,7 +12,7 @@ export default function ({
   title: string;
 }) {
   return (
-    <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white">
+    <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white drop-shadow-md">
       <div class="aspect-w-3 aspect-h-2 bg-gray-200 group-hover:opacity-75 sm:h-48">
         <img
           src={thumbnails.high.url}

@@ -1,17 +1,18 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 export const prerender = true;
 
-import VideoGrid from '../components/VideoGrid';
+import VideoGrid from "../components/VideoGrid";
 import Layout from "../layouts/Layout.astro";
 
-const allVideos = await getCollection('videos');
-const recentVideos = [...allVideos].sort(
-  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
-).slice(0, 10);
+const allVideos = await getCollection("videos");
+const recentVideos = [...allVideos]
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 10);
 ---
 
 <Layout>
+  <h1 class="text-lg font-semibold px-8 py-4">Videos:</h1>
   <VideoGrid videos={recentVideos} />
 </Layout>
